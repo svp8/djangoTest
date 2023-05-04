@@ -1,0 +1,18 @@
+p=models.Person(first_name="Ivan",last_name="Ivanov",date_birth="2000-01-01")
+models.Person.objects.create(first_name="Vlad",last_name="Ivanov",date_birth="2006-01-01")
+    
+    
+In []: models.Person.objects.filter(first_name="Ivan").get()
+<Person: Ivan>
+
+In []: models.Person.objects.filter()
+<QuerySet [<Person: sdasda>, <Person: Ivan>]>
+
+In [12]: models.Person.objects.filter(date_birth__lt='2010-01-01')
+Out[12]: <QuerySet [<Person: Ivan>, <Person: Vlad>]>
+
+In [13]: models.Person.objects.filter(date_birth__lt='2003-01-01')
+Out[13]: <QuerySet [<Person: Ivan>]>
+
+In [14]: models.Person.objects.filter(first_name__contains='v')
+Out[14]: <QuerySet [<Person: Ivan>, <Person: Vlad>]>
